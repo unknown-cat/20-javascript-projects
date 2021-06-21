@@ -45,3 +45,14 @@ body {
   font-style: italic;
   margin-top: 15px;
 }
+
+/*Media Query: Tablet or Similar */
+@media screen and (max-width: 1000px) {
+  .quote-container {
+    margin: auto 10px;
+  }
+
+  .quote-text {
+    font-size: 2.5rem;
+  }
+}
