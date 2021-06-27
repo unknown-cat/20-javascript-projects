@@ -7,63 +7,59 @@ const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
-//Show Loading
-function loading() {
+function showLoadingSpinner() {
 	loader.hidden = false;
 	quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function complete() {
+// Hide Loading Spinner
+function removeLoadingSpinner() {
 	quoteContainer.hidden = false;
 	loader.hidden = true;
 }
 
-// Show New Quote
-function newQuote() {
-	loading();
-	// Pick a random quote from apiQuotes array
-	const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-	if (!quote.author) {
+function showNewQuote() {
+	showLoadingSpinner();
+
+	const randomQuote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
+	if (!randomQuote.author) {
 		authorText.textContent = 'Unknown Author'
 	} else {
-		authorText.textContent = quote.author
+		authorText.textContent = randomQuote.author
 	}
 
 	//Check Quote length to determine styling
-	if (quote.text.length > 120) {
+	if (randomQuote.text.length > 120) {
 		quoteText.classList.add('long-quote');
 	} else {
 		quoteText.classList.remove('long-quote');
 	}
 
-	//Set Quote, Hide Loader
-	quoteText.textContent = quote.text;
-	complete();
+	//Set Quote, Remove Loading Spinner
+	quoteText.textContent = randomQuote.text;
+	removeLoadingSpinner();
 }
 
-// Get Quotes From Api
-async function getQuotes() {
-	loading();
+async function getQuotesFromApi() {
+	showLoadingSpinner();
 	const apiUrl = 'https://type.fit/api/quotes';
 	try {
 		const response = await fetch(apiUrl);
 		apiQuotes = await response.json();
-		newQuote();
+		showNewQuote();
 	} catch (error) {
-		// Catch Error Here
+		console.log(error)
 	}
 }
 
-// Tweet Quote
 function tweetQuote() {
 	const tweeterUrl = `https://twitter.com/intent/tweet?text=${ quoteText.textContent } - ${ authorText.textContent }`;
 	window.open(tweeterUrl, '_blank');
 }
 
 // Event Listeners
-newQuoteBtn.addEventListener('click', newQuote)
+newQuoteBtn.addEventListener('click', showNewQuote)
 twitterBtn.addEventListener('click', tweetQuote)
 
 // On Load;
-getQuotes();
+getQuotesFromApi();
