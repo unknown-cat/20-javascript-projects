@@ -10,7 +10,7 @@ const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${ apiKey }&co
 
 // Helper Function To Set Attributes on DOM Elements
 function setAttributes(element, attributes) {
-	for(const key in attributes) {
+	for (const key in attributes) {
 		element.setAttribute(key, attributes[key])
 	}
 }
@@ -48,6 +48,13 @@ async function getPhotos() {
 		console.log(error)
 	}
 }
+
+// Check to see if scrolling near bottom of page, Load More Photos
+window.addEventListener('scroll', () => {
+	if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+		getPhotos()
+	}
+})
 
 //On Load
 getPhotos()
