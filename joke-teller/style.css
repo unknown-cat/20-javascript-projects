@@ -3,3 +3,21 @@
 html {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  background-color: #45badd;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./robot.gif");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
