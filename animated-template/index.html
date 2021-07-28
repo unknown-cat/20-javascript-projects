@@ -4,17 +4,27 @@
 	<meta charset="utf-8"/>
 	<meta content="width=device-width, initial-scale=1" name="viewport"/>
 	<meta content="#000000" name="theme-color"/>
-	<title>Animated Template</title>
 	<!-- Favicon -->
 	<link href="favicon.png" rel="icon" type="image/png">
 	<!-- Font Awesome -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
 				rel="stylesheet"/>
 	<!--	AOS.css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link crossorigin="anonymous"
+				href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+				integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+				referrerpolicy="no-referrer"
+				rel="stylesheet"/>
 	<!-- Tailwind Library -->
 	<link href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
 				rel="stylesheet"/>
+	<title>Animated Template</title>
+	<!-- cdn AOS.js -->
+	<script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<!-- AOS Library initialization-->
+	<script defer src="script.js"></script>
+	<!-- Navigation Script -->
+	<script defer src="navbar.js"></script>
 </head>
 <body class="text-gray-800 antialiased">
 
@@ -89,11 +99,10 @@
 			<div class="items-center flex flex-wrap">
 				<div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
 					<div class="pr-12">
-						<h1 class="text-white font-semibold text-5xl" data-aos="fade-up">
+						<h1 class="text-white font-semibold text-5xl">
 							Welcome your epiphany.
 						</h1>
-						<p class="mt-4 text-lg text-gray-300" data-aos="fade-right"
-							 data-aos-delay="1000">
+						<p class="mt-4 text-lg text-gray-300">
 							Lorem ipsum dolor sit. Eum totam aspernatur aliquam praesentium
 							aperiam magni, dignissimos, atque incidunt fuga nulla distinctio
 							eligendi enim placeat nesciunt, soluta maxime nihil ipsa minus!
@@ -381,9 +390,9 @@
 						<img
 								alt="..."
 								class="shadow-lg rounded-full max-w-full mx-auto"
+								data-aos="zoom-in"
 								src="https://randomuser.me/api/portraits/men/60.jpg"
 								style="max-width: 120px;"
-								data-aos="zoom-in"
 						/>
 						<div class="pt-6 text-center">
 							<h5 class="text-xl font-bold">Ryan Thompson</h5>
@@ -418,9 +427,10 @@
 						<img
 								alt="..."
 								class="shadow-lg rounded-full max-w-full mx-auto"
+								data-aos="zoom-in"
+								data-aos-delay="400"
 								src="https://randomuser.me/api/portraits/women/61.jpg"
 								style="max-width: 120px;"
-								data-aos="zoom-in" data-aos-delay="400"
 						/>
 						<div class="pt-6 text-center">
 							<h5 class="text-xl font-bold">Romina Hadid</h5>
@@ -450,9 +460,10 @@
 						<img
 								alt="..."
 								class="shadow-lg rounded-full max-w-full mx-auto"
+								data-aos="zoom-in"
+								data-aos-delay="600"
 								src="https://randomuser.me/api/portraits/women/62.jpg"
 								style="max-width: 120px;"
-								data-aos="zoom-in" data-aos-delay="600"
 						/>
 						<div class="pt-6 text-center">
 							<h5 class="text-xl font-bold">Alexa Smith</h5>
@@ -487,9 +498,10 @@
 						<img
 								alt="..."
 								class="shadow-lg rounded-full max-w-full mx-auto"
+								data-aos="zoom-in"
+								data-aos-delay="800"
 								src="https://randomuser.me/api/portraits/women/63.jpg"
 								style="max-width: 120px;"
-								data-aos="zoom-in" data-aos-delay="800"
 						/>
 						<div class="pt-6 text-center">
 							<h5 class="text-xl font-bold">Jenna Kardi</h5>
@@ -796,22 +808,5 @@
 </footer>
 <!-- End of Footer Section -->
 </body>
-<!-- AOS.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-				integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-	AOS.init({
-		delay: 200, // values from 0 to 3000, with step 50ms
-		duration: 1500, // values from 0 to 3000, with step 50ms
-		once: false, // whether animation should happen only once - while scrolling down
-		mirror: false, // whether elements should animate out while scrolling past them
-	});
-</script>
-<!-- Navigation Script -->
-<script>
-	function toggleNavbar(collapseID) {
-		document.getElementById(collapseID).classList.toggle("hidden");
-		document.getElementById(collapseID).classList.toggle("block");
-	}
-</script>
+
 </html>
