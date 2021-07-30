@@ -27,7 +27,18 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  transform: translateX(-100vw);
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay-slide-right {
+  transition: all 0.4s ease-in-out;
+  transform: translateX(0);
+}
+
+.overlay-slide-left {
+  transition: all 0.8s ease-in-out;
+  transform: translateX(-100vw);
 }
 
 /* Nav Menu Items */
@@ -65,8 +76,8 @@ nav li a::before {
   width: 25vw;
   height: 3px;
   content: "";
-  background-color: #ffffff;
   opacity: 0;
+  background-color: #ffffff;
 }
 
 nav li a:hover::before {
