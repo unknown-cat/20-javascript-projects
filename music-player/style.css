@@ -5,56 +5,51 @@ html {
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: #c9ced3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #c9ced3;
 }
 
-
-
 .img-container {
-
   position: relative;
   top: -50px;
   left: 50px;
 }
 
-
 h2 {
   font-size: 25px;
-  text-align: center;
   margin: 0;
+  text-align: center;
 }
 
 h3 {
   font-size: 20px;
-  text-align: center;
   font-weight: 400;
   margin: 5px 0 0;
+  text-align: center;
 }
 
 /* Progress */
 .progress-container {
-  background: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 40px 20px;
-  height: 4px;
   width: 90%;
+  height: 4px;
+  margin: 40px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #fff;
 }
 
 .progress {
-  background: #242323;
-  border-radius: 5px;
-  height: 100%;
-  /* change this to show progress */
   width: 66%;
+  height: 100%;
   transition: width 0.1s linear;
+  /* change this to show progress */
+  border-radius: 5px;
+  background: #242323;
 }
 
 .duration-wrapper {
@@ -74,12 +69,9 @@ h3 {
 
 .fas {
   font-size: 30px;
-  color: rgb(129, 129, 129);
   margin-right: 30px;
-
+  color: rgb(129, 129, 129);
 }
-
-
 
 .main-button {
   font-size: 40px;
