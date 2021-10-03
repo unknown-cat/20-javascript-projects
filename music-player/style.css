@@ -91,7 +91,13 @@ h3 {
 .fas {
   font-size: 30px;
   margin-right: 30px;
+  cursor: pointer;
+  user-select: none;
   color: rgb(129, 129, 129);
+}
+
+.fas:hover {
+  filter: brightness(90%);
 }
 
 .main-button {
@@ -102,9 +108,9 @@ h3 {
 
 /* Media Query: iPhone (Vertical) */
 @media screen and (max-width: 376px) {
-.player-container {
-  width: 95vw;
-}
+  .player-container {
+    width: 95vw;
+  }
 
   .img-container {
     left: 29px;
