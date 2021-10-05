@@ -1,16 +1,16 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 html {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  overflow-y: hidden;
+  font-family: Nunito, sans-serif;
   display: flex;
+  overflow-y: hidden;
   align-items: center;
-
+  min-height: 100vh;
+  margin: 0;
 }
 
 /* Video Background */
@@ -31,25 +31,25 @@ video {
 
 .video-overlay {
   position: fixed;
-  left: 0;
   top: 0;
-  height: 100vh;
+  left: 0;
   width: 100vw;
-  background-color: rgba(255,255,255, 0.2);
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Container */
 .container {
-  min-width: 580px;
-  min-height: 304px;
-  color: black;
-  margin: 0 auto;
-  padding: 25px 50px;
-  border-radius: 5px;
   z-index: 2;
   display: flex;
   justify-content: center;
-
+  min-width: 580px;
+  min-height: 304px;
+  margin: 0 auto;
+  padding: 25px 50px;
+  color: black;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .input-container {
@@ -59,9 +59,9 @@ video {
 
 h1 {
   font-size: 35px;
-  text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Form */
@@ -80,26 +80,28 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  background: #fff;
   outline: none;
-
+  background: #fff;
+  font-family: inherit;
 }
 
 /* Button */
 button {
   width: 100%;
   height: 40px;
-  border-radius: 20px;
   margin-top: 15px;
-  border: none;
-  text-transform: uppercase;
-  background: #006959;
-  color: white;
   cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  border-radius: 20px;
   outline: none;
+  background: #006959;
 }
 
-
+button:hover {
+  filter: brightness(115%);
+}
 
 /* Countdown */
 ul {
@@ -109,14 +111,14 @@ ul {
 li {
 
   font-size: 30px;
-  list-style-type: none;
   padding: 10px;
+  list-style-type: none;
   text-transform: uppercase;
 }
 
 li span {
-  display: block;
   font-size: 80px;
+  display: block;
   text-align: center;
 }
 
@@ -128,23 +130,24 @@ li span {
 
 
 /* Media Query: Large Smartphone (Vertical) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .video-background {
     width: 100vw;
     height: 100vh;
   }
-  
+
   video {
+    margin-top: -1px;
     object-fit: cover;
     object-position: 70%;
-    margin-top: -1px;
   }
 
   .container {
-
+    width: 95vw;
+    min-width: unset;
     min-height: 245px;
-    padding: 20px;
     margin: 10px;
+    padding: 20px;
   }
 
   .input-container {
