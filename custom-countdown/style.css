@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 html {
   box-sizing: border-box;
@@ -35,7 +35,7 @@ video {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 /* Container */
@@ -49,7 +49,7 @@ video {
   padding: 25px 50px;
   color: black;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .input-container {
@@ -75,6 +75,7 @@ label {
 }
 
 input {
+  font-family: Nunito, sans-serif;
   width: 95%;
   margin-bottom: 10px;
   padding: 10px;
@@ -82,7 +83,6 @@ input {
   border-radius: 20px;
   outline: none;
   background: #fff;
-  font-family: inherit;
 }
 
 /* Button */
@@ -100,7 +100,7 @@ button {
 }
 
 button:hover {
-  filter: brightness(115%);
+  filter: brightness(110%);
 }
 
 /* Countdown */
@@ -109,8 +109,8 @@ ul {
 }
 
 li {
-
   font-size: 30px;
+  display: inline-block;
   padding: 10px;
   list-style-type: none;
   text-transform: uppercase;
@@ -128,18 +128,44 @@ li span {
   top: 60px;
 }
 
+.complete-title {
+  animation: complete 4s infinite;
+}
 
-/* Media Query: Large Smartphone (Vertical) */
-@media screen and (max-width: 750px) {
-  .video-background {
-    width: 100vw;
-    height: 100vh;
+@keyframes complete {
+  0% {
+    color: rgb(233, 12, 12);
   }
 
+  25% {
+    color: rgb(214, 193, 0);
+  }
+
+  50% {
+    color: rgb(68, 231, 19);
+    transform: scale(1.5);
+  }
+
+  75% {
+    color: rgb(19, 79, 209);
+  }
+
+  100% {
+    color: rgb(188, 16, 211);
+  }
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
   video {
     margin-top: -1px;
     object-fit: cover;
     object-position: 70%;
+  }
+
+  .video-background {
+    width: 100vw;
+    height: 100vh;
   }
 
   .container {
@@ -168,7 +194,6 @@ li span {
   }
 
   h1 {
-    font-size: 20px;
   }
 
   li {
