@@ -7,6 +7,10 @@ const countdownElTitle = document.getElementById('countdown-title')
 const countdownButton = document.getElementById('countdown-button')
 const timeElements = document.querySelectorAll('span')
 
+const completeEl = document.getElementById('complete')
+const completeElInfo = document.getElementById('complete-info')
+const completeButton = document.getElementById('complete-button')
+
 let countdownTitle = ''
 let countodwnDate = ''
 let countdownValue = Date
@@ -34,16 +38,26 @@ function updateDOM() {
 		const seconds = Math.floor((distance % minute) / second)
 		console.log(days, hours, minutes, seconds)
 
-		//Populate Countdown
-		countdownElTitle.textContent = `${ countdownTitle }`
-		timeElements[0].textContent = `${ days }`
-		timeElements[1].textContent = `${ hours }`
-		timeElements[2].textContent = `${ minutes }`
-		timeElements[3].textContent = `${ seconds }`
 		// Hide Input
 		inputContainer.hidden = true
-		// Show Countdown
-		countDownEl.hidden = false
+
+		//If countdown has ended. show complete
+		if (distance < 0) {
+			countDownEl.hidden = true
+			clearInterval(countdownActive)
+			completeElInfo.textContent = `${ countdownTitle } finished on ${ countodwnDate }`
+			completeEl.hidden = false
+		} else {
+			// Else, show countdown in progress
+			countdownElTitle.textContent = `${ countdownTitle }`
+			timeElements[0].textContent = `${ days }`
+			timeElements[1].textContent = `${ hours }`
+			timeElements[2].textContent = `${ minutes }`
+			timeElements[3].textContent = `${ seconds }`
+			completeEl.hidden = true
+			countDownEl.hidden = false
+		}
+
 	}, second)
 }
 
@@ -66,14 +80,17 @@ function updateCountdown(e) {
 function reset() {
 	// Hide Countdowns, show input
 	countDownEl.hidden = true
+	completeEl.hidden = true
 	inputContainer.hidden = false
 	// Stop the countdown
 	clearInterval(countdownActive)
 	// Reset Values
 	countdownTitle = ''
 	countodwnDate = ''
+	console.log('here' , countdownTitle, countodwnDate)
 }
 
 // Event Listeners
 countdownForm.addEventListener('submit', updateCountdown)
 countdownButton.addEventListener('click', reset)
+completeButton.addEventListener('click', reset)
