@@ -12,7 +12,7 @@ const completeElInfo = document.getElementById('complete-info')
 const completeButton = document.getElementById('complete-button')
 
 let countdownTitle = ''
-let countodwnDate = ''
+let countdownDate = ''
 let countdownValue = Date
 let countdownActive
 
@@ -37,15 +37,13 @@ function updateDOM() {
 		const minutes = Math.floor((distance % hour) / minute)
 		const seconds = Math.floor((distance % minute) / second)
 		console.log(days, hours, minutes, seconds)
-
 		// Hide Input
 		inputContainer.hidden = true
-
 		//If countdown has ended. show complete
 		if (distance < 0) {
 			countDownEl.hidden = true
 			clearInterval(countdownActive)
-			completeElInfo.textContent = `${ countdownTitle } finished on ${ countodwnDate }`
+			completeElInfo.textContent = `${ countdownTitle } finished on ${ countdownDate }`
 			completeEl.hidden = false
 		} else {
 			// Else, show countdown in progress
@@ -57,7 +55,6 @@ function updateDOM() {
 			completeEl.hidden = true
 			countDownEl.hidden = false
 		}
-
 	}, second)
 }
 
@@ -65,13 +62,13 @@ function updateDOM() {
 function updateCountdown(e) {
 	e.preventDefault()
 	countdownTitle = e.srcElement[0].value
-	countodwnDate = e.srcElement[1].value
+	countdownDate = e.srcElement[1].value
 	// Check for valid date
-	if (countodwnDate === '') {
+	if (countdownDate === '') {
 		alert('Please select a date for the countdown.')
 	} else {
 		// Get number version of current Date, updateDOM
-		countdownValue = new Date(countodwnDate).getTime()
+		countdownValue = new Date(countdownDate).getTime()
 		updateDOM()
 	}
 }
@@ -86,8 +83,7 @@ function reset() {
 	clearInterval(countdownActive)
 	// Reset Values
 	countdownTitle = ''
-	countodwnDate = ''
-	console.log('here' , countdownTitle, countodwnDate)
+	countdownDate = ''
 }
 
 // Event Listeners
