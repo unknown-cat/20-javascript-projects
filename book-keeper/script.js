@@ -8,7 +8,6 @@ const bookmarksContainer = document.getElementById('bookmarks-container')
 
 let bookmarks = []
 
-
 // Show Modal, Focus on Input
 function showModal() {
 	modal.classList.add('show-modal')
@@ -41,6 +40,8 @@ function validate(nameValue, urlValue) {
 
 // Build Bookmarks DOM
 function buildBookmarks() {
+	// Remove All bookmark elements
+	bookmarksContainer.textContent = ''
 	// Build items
 	bookmarks.forEach(bookmark => {
 		const { name, url } = bookmark;
@@ -51,7 +52,7 @@ function buildBookmarks() {
 		const closeIcon = document.createElement('i')
 		closeIcon.classList.add('fas', 'fa-times', 'delete-bookmark')
 		closeIcon.setAttribute('title', 'Delete Bookmark')
-		closeIcon.setAttribute('onclick', `deleteBookmarks('${ url }')`)
+		closeIcon.setAttribute('onclick', `deleteBookmark('${ url }')`)
 		// Favicon / Link Container
 		const linkInfo = document.createElement('div')
 		linkInfo.classList.add('item-name')
@@ -89,6 +90,18 @@ function fetchBookmarks() {
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
 	}
 	buildBookmarks()
+}
+
+// Delete Bookmark
+function deleteBookmark(url) {
+	bookmarks.forEach((bookmark, i) => {
+		if (bookmark.url === url) {
+			bookmarks.splice(i, 1)
+		}
+	})
+	// Update bookmarks array in localStorage, re-populate DOM
+	localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
+	fetchBookmarks()
 }
 
 // Handle Data from Form
