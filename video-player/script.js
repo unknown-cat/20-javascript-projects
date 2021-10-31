@@ -32,9 +32,19 @@ video.addEventListener('ended', showPlayIcon)
 
 // Progress Bar ---------------------------------- //
 
+// Calculate display time format
+function displayTime(time) {
+	const min = Math.floor(time / 60)
+	let sec = Math.floor(time % 60)
+	sec = sec > 9 ? sec : `0${ sec }`
+	return `${ min }:${ sec }`
+}
+
 // Update progress bar as video plays
 function updateProgress() {
-	progressBar.style.width = `${ (video.currentTime / video.duration) * 100}%`
+	progressBar.style.width = `${ (video.currentTime / video.duration) * 100 }%`
+	currentTime.textContent = `${displayTime(video.currentTime)}`
+	duration.textContent = `${displayTime(video.duration)}`
 }
 
 // Volume Controls --------------------------- //
