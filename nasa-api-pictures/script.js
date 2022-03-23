@@ -13,7 +13,7 @@ let resultsArray = [];
 let favorites = {};
 
 function createDOMNodes(page) {
-  const currentArray = page === 'resultsArray' ? resultsArray : Object.values(favorites);
+  const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
   console.log('current array', page, currentArray);
   currentArray.forEach((result) => {
     // Card Container
@@ -40,8 +40,13 @@ function createDOMNodes(page) {
     // Save Text
     const saveText = document.createElement('p');
     saveText.classList.add('clickable');
-    saveText.textContent = 'Add To Favorites';
-    saveText.setAttribute('onclick', `saveFavorites('${result.url}')`)
+    if (page === 'results') {
+      saveText.textContent = 'Add To Favorites';
+      saveText.setAttribute('onclick', `saveFavorites('${result.url}')`)
+    } else {
+      saveText.textContent = 'Remove Favorite';
+      saveText.setAttribute('onclick', `removeFavorites('${result.url}')`)
+    }
     // Card Text
     const cardText = document.createElement('p');
     cardText.classList.add('card-text');
@@ -70,6 +75,7 @@ function updateDOM(page) {
     favorites = JSON.parse(localStorage.getItem('nasaFavorites'));
     console.log('fav, from local', favorites);
   }
+  imagesContainer.textContent = '';
   createDOMNodes(page);
 }
 
@@ -101,5 +107,16 @@ function saveFavorites(itemUrl) {
   })
 }
 
+// Remove Item from Favorite
+
+function removeFavorites(itemUrl) {
+  if (favorites[itemUrl]) {
+    delete favorites[itemUrl];
+    // Set Favorites in LocalStorage
+    localStorage.setItem('nasaFavorites', JSON.stringify(favorites))
+    updateDOM('favorites');
+  };
+}
+
 // On Load
-getNasaPictures();
+// getNasaPictures();
