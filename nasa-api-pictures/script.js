@@ -121,7 +121,6 @@ function saveFavorites(itemUrl) {
 }
 
 // Remove Item from Favorite
-
 function removeFavorites(itemUrl) {
   if (favorites[itemUrl]) {
     delete favorites[itemUrl];
@@ -132,4 +131,4 @@ function removeFavorites(itemUrl) {
 }
 
 // On Load
-// getNasaPictures();
+getNasaPictures();
