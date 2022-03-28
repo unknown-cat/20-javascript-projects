@@ -90,9 +90,6 @@ function createCanvas() {
   renderCanvas();
 }
 
-// Remove this
-createCanvas();
-
 // Reset Ball to Center
 function ballReset() {
   ballX = width / 2;
@@ -223,7 +220,8 @@ function startGame() {
   computerScore = 0;
   ballReset();
   createCanvas();
-  animate();
+  // animate();
+  setInterval(animate, 1000/60);
   canvas.addEventListener('mousemove', (e) => {
     console.log(e.clientX);
     playerMoved = true;
@@ -241,4 +239,4 @@ function startGame() {
 }
 
 // On Load
-// startGame();
+startGame();
