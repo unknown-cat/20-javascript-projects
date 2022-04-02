@@ -131,4 +131,5 @@ function removeFavorites(itemUrl) {
 }
 
 // On Load
+
 getNasaPictures();
