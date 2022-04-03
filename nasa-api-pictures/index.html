@@ -17,8 +17,14 @@
   <!-- Container -->
   <div class="container">
     <!-- Navigation -->
-    <div class="navigation-container">
+    <span class="navigation-container">
       <span class="background">
+         <!-- Filter -->
+         <span class="navigation-items filter">
+          <input type="text" class="search form-control mt-3" placeholder="enter author name">
+          <button class="btn-up" type="button" title="sort by date: Ascending">&#9650;</button>
+          <button class="btn-down" type="button" title="sort by date: Decending">&#9660;</button>
+        </span>
         <!-- Results Nav -->
         <span class="navigation-items" id="resultsNav">
           <h3 class="clickable" onclick="updateDOM('favorites')">Favorites</h3>
@@ -30,9 +36,9 @@
       <span class="navigation-items hidden" id="favoritesNav">
         <h3 class="clickable" onclick="getNasaPictures()">Load More Nasa Images</h3>
       </span>
-    </div>
-    <!-- Images Container -->
-    <div class="images-container"></div>
+  </div>
+  <!-- Images Container -->
+  <div class="images-container"></div>
   </div>
   <!-- Save Conformation -->
   <div class="save-confirmed" hidden>
