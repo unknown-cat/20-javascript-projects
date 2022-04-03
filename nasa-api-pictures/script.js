@@ -3,10 +3,12 @@ const favoritesNav = document.getElementById('favoritesNav');
 const imagesContainer = document.querySelector('.images-container');
 const saveConfermed = document.querySelector('.save-confirmed');
 const loader = document.querySelector('.loader');
+const btnUp = document.querySelector('.btn-up')
+const btnDown = document.querySelector('.btn-down')
 
 // NASA API
 const count = 10;
-const apiKey = 'DEMO_KEY';
+const apiKey = config.NASA_API_KEY;
 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=${count}`;
 
 let resultsArray = [];
@@ -24,8 +26,16 @@ function showContent(page) {
   loader.classList.add('hidden');
 }
 
-function createDOMNodes(page) {
+function createDOMNodes(page, ascDesc = null) {
   const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
+
+  if (ascDesc === 'asc') {
+    currentArray.sort((a, b) => b.date.localeCompare(a.date))
+  }
+  if (ascDesc === 'desc') {
+    currentArray.sort((a, b) => a.date.localeCompare(b.date))
+  }
+
   currentArray.forEach((result) => {
     // Card Container
     const card = document.createElement('div');
@@ -80,13 +90,13 @@ function createDOMNodes(page) {
   });
 }
 
-function updateDOM(page) {
+function updateDOM(page, ascDesc) {
   // Get Favorites From LocalStorage
   if (localStorage.getItem('nasaFavorites')) {
     favorites = JSON.parse(localStorage.getItem('nasaFavorites'));
   }
   imagesContainer.textContent = '';
-  createDOMNodes(page);
+  createDOMNodes(page, ascDesc);
   showContent(page);
 }
 
@@ -129,6 +139,22 @@ function removeFavorites(itemUrl) {
     updateDOM('favorites');
   };
 }
+
+// Sort Items
+btnUp.addEventListener('click', () => {
+  if (!resultsNav.classList.contains('hidden')) {
+    updateDOM('results', 'asc')
+  } else {
+    updateDOM('favorites', 'asc')
+  }
+})
+btnDown.addEventListener('click', () => {
+  if (!resultsNav.classList.contains('hidden')) {
+    updateDOM('results', 'desc')
+  } else {
+    updateDOM('favorites', 'desc')
+  }
+})
 
 // On Load
 
