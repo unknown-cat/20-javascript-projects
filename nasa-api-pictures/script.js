@@ -10,7 +10,8 @@ const searchInput = document.querySelector('.search-by-name')
 // NASA API
 const count = 10;
 const apiKey = config.NASA_API_KEY;
-const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=${count}`;
+const apiDemoKey = 'DEMO_KEY';
+const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey ? apiKey : apiDemoKey}&count=${count}`;
 
 let resultsArray = [];
 let favorites = {};
