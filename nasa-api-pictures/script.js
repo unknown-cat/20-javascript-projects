@@ -5,6 +5,7 @@ const saveConfermed = document.querySelector('.save-confirmed');
 const loader = document.querySelector('.loader');
 const btnUp = document.querySelector('.btn-up')
 const btnDown = document.querySelector('.btn-down')
+const searchInput = document.querySelector('.search-by-name')
 
 // NASA API
 const count = 10;
@@ -26,14 +27,21 @@ function showContent(page) {
   loader.classList.add('hidden');
 }
 
-function createDOMNodes(page, ascDesc = null) {
-  const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
+function createDOMNodes(page, ascDesc = null, str) {
+  let currentArray = page === 'results' ? resultsArray : Object.values(favorites);
 
   if (ascDesc === 'asc') {
     currentArray.sort((a, b) => b.date.localeCompare(a.date))
   }
   if (ascDesc === 'desc') {
     currentArray.sort((a, b) => a.date.localeCompare(b.date))
+  }
+  if (str) {
+    currentArray = currentArray.filter(item => {
+      if (item.copyright) {
+        return item.copyright.toLowerCase().includes(str)
+      }
+    })
   }
 
   currentArray.forEach((result) => {
@@ -90,13 +98,13 @@ function createDOMNodes(page, ascDesc = null) {
   });
 }
 
-function updateDOM(page, ascDesc) {
+function updateDOM(page, ascDesc, str) {
   // Get Favorites From LocalStorage
   if (localStorage.getItem('nasaFavorites')) {
     favorites = JSON.parse(localStorage.getItem('nasaFavorites'));
   }
   imagesContainer.textContent = '';
-  createDOMNodes(page, ascDesc);
+  createDOMNodes(page, ascDesc, str);
   showContent(page);
 }
 
@@ -156,6 +164,16 @@ btnDown.addEventListener('click', () => {
   }
 })
 
+// Search Items 
+searchInput.addEventListener('input', (e) => {
+  const str = e.target.value.toLowerCase()
+  if (!resultsNav.classList.contains('hidden')) {
+    return updateDOM('results', null, str)
+  } else {
+    return updateDOM('favorites', null, str)
+  }
+})
+
 // On Load
 
-getNasaPictures();
+// getNasaPictures();
