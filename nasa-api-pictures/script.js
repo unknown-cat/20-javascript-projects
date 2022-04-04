@@ -176,4 +176,4 @@ searchInput.addEventListener('input', (e) => {
 
 // On Load
 
-// getNasaPictures();
+getNasaPictures();
